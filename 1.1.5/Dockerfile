@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     openmpi-bin \
     python \
     wget \
+    gnuplot-nox \
 	&& rm -rf /var/lib/apt/lists/*
 
 
