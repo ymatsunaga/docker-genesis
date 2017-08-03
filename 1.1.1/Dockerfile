@@ -18,6 +18,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python \
     wget \
     gnuplot-nox \
+    vim \
 	&& rm -rf /var/lib/apt/lists/*
 
 
