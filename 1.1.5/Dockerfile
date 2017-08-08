@@ -33,4 +33,3 @@ RUN groupadd -r yasu && useradd -r -g yasu yasu
 USER yasu
 ENV PATH /opt/genesis/bin:$PATH
 WORKDIR /work
-
