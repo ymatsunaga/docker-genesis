@@ -1,5 +1,7 @@
 FROM ubuntu:16.04
+MAINTAINER Yasuhiro Matsunaga <ymatsunaga@riken.jp>
 
+ENV DEBIAN_FRONTEND noninteractive
 ENV GENESIS_VERSION 1.1.4
 ENV OMP_NUM_THREADS 1
 
@@ -33,3 +35,4 @@ RUN groupadd -r yasu && useradd -r -g yasu yasu
 USER yasu
 ENV PATH /opt/genesis/bin:$PATH
 WORKDIR /work
+
