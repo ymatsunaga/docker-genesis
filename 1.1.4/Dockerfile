@@ -31,6 +31,8 @@ RUN ./configure && make install
 RUN ln -s /opt/genesis-$GENESIS_VERSION /opt/genesis
 
 RUN groupadd -r yasu && useradd -r -g yasu yasu
+RUN mkdir -p /work
+RUN chown -R yasu:yasu /work
 
 USER yasu
 ENV PATH /opt/genesis/bin:$PATH
