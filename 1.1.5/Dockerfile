@@ -32,7 +32,10 @@ RUN ln -s /opt/genesis-$GENESIS_VERSION /opt/genesis
 
 RUN groupadd -r yasu && useradd -r -g yasu yasu
 
-USER yasu
-ENV PATH /opt/genesis/bin:$PATH
 WORKDIR /work
+RUN chmod 777 /work
+
+# USER yasu
+ENV PATH /opt/genesis/bin:$PATH
+# WORKDIR /work
 
