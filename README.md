@@ -1,5 +1,5 @@
 # Docker image for genesis
-Molecular dynamics software (GENESIS)[http://www.aics.riken.jp/labs/cbrt/] is ready for use within docker
+Molecular dynamics software [GENESIS](http://www.aics.riken.jp/labs/cbrt/) is ready for use within docker
 
 # Usage
 
