@@ -4,7 +4,7 @@ MAINTAINER Yasuhiro Matsunaga <ymatsunaga@riken.jp>
 USER root
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV GENESIS_VERSION 1.1.6RC
+ENV GENESIS_VERSION 1.1.6RC2
 ENV OMP_NUM_THREADS 1
 
 RUN apt-get update && apt-get install -yq --no-install-recommends \
