@@ -1,17 +1,20 @@
-FROM ubuntu:16.04
+FROM jupyter/base-notebook
 MAINTAINER Yasuhiro Matsunaga <ymatsunaga@riken.jp>
+
+USER root
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV GENESIS_VERSION 1.1.0
 ENV OMP_NUM_THREADS 1
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install -yq --no-install-recommends \
     binutils \
     bzip2 \
     gcc \
     gfortran \
     g++ \
     make \
+    liblapack3 \
     liblapack-dev \
     libopenmpi-dev \
     openssh-client \
@@ -21,7 +24,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     wget \
     gnuplot-nox \
     vim \
-	&& rm -rf /var/lib/apt/lists/*
+    && apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /opt
 RUN wget --content-disposition "http://www.aics.riken.jp/labs/cbrt/?smd_process_download=1&download_id=4570" \
@@ -30,9 +34,14 @@ WORKDIR genesis-$GENESIS_VERSION/src/
 RUN ./configure && make install
 RUN ln -s /opt/genesis-$GENESIS_VERSION /opt/genesis
 
-RUN groupadd -r yasu && useradd -r -g yasu yasu
+RUN mkdir -p /work && \
+    chown $NB_USER:$NB_GID /work && \
+    fix-permissions /work
 
-USER yasu
+# Switch back to jovyan to avoid accidental container runs as root
+USER $NB_USER
+
 ENV PATH /opt/genesis/bin:$PATH
+RUN fix-permissions /work
 WORKDIR /work
 
