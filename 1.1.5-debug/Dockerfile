@@ -31,7 +31,7 @@ WORKDIR /opt
 RUN wget --content-disposition "http://www.aics.riken.jp/labs/cbrt/?smd_process_download=1&download_id=6090" \
   && tar jxvf genesis-$GENESIS_VERSION.tar.bz2
 WORKDIR genesis-$GENESIS_VERSION/src/
-RUN ./configure --enable-debug=1 && make install
+RUN ./configure --enable-debug=3 && make install
 RUN ln -s /opt/genesis-$GENESIS_VERSION /opt/genesis
 
 RUN mkdir -p /work && \
