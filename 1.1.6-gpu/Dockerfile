@@ -5,7 +5,7 @@ MAINTAINER Yasuhiro Matsunaga <ymatsunaga@riken.jp>
 USER root
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV GENESIS_VERSION 1.1.6RC2
+ENV GENESIS_VERSION 1.1.6
 ENV OMP_NUM_THREADS 1
 
 RUN apt-get update && apt-get install -yq --no-install-recommends \
@@ -59,7 +59,7 @@ RUN mkdir -p /opt && \
     fix-permissions /opt
 
 WORKDIR /opt
-RUN wget --content-disposition "http://www.aics.riken.jp/labs/cbrt/?smd_process_download=1&download_id=6264" \
+RUN wget --content-disposition "http://www.aics.riken.jp/labs/cbrt/?smd_process_download=1&download_id=6323" \
   && tar jxvf genesis-$GENESIS_VERSION.tar.bz2
 WORKDIR genesis-$GENESIS_VERSION/src/
 RUN ./configure --enable-single --enable-gpu && make install
