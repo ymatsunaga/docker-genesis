@@ -59,7 +59,7 @@ RUN mkdir -p /opt && \
     fix-permissions /opt
 
 WORKDIR /opt
-RUN wget --content-disposition "http://www.aics.riken.jp/labs/cbrt/?smd_process_download=1&download_id=6323" \
+RUN wget --content-disposition "https://www.r-ccs.riken.jp/labs/cbrt/?smd_process_download=1&download_id=6323" \
   && tar jxvf genesis-$GENESIS_VERSION.tar.bz2
 WORKDIR genesis-$GENESIS_VERSION/src/
 RUN ./configure --enable-single --enable-gpu && make install
