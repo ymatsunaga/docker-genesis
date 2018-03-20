@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /opt
-RUN wget --content-disposition "https://www.r-ccs.riken.jp/labs/cbrt/?smd_process_download=1&download_id=6323" \
+RUN wget --content-disposition "https://www.aics.riken.jp/labs/cbrt/?smd_process_download=1&download_id=6323" \
   && tar jxvf genesis-$GENESIS_VERSION.tar.bz2
 WORKDIR genesis-$GENESIS_VERSION/src/
 RUN ./configure && make install
